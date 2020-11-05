@@ -33,22 +33,22 @@ else: #if the activeProgram boolean is False, which can only be done through the
 ## Python Program 01 – Calculator
 A calculator with 5 different operators and two different numbers, all based off user input. The input mechanism was similar to the one on Hello Python above, but since the inputs were two integers and then an operator, I first treated them all like strings. Then with the operators, I matched the string of the operator with the actual operation. Finally with the integers, I just put them into an int() before sticking them into the function.
 ```ruby
-def doMath(numOne,numTwo,operation):
-	if operation == "-":
-		return numOne - numTwo
-	elif operation == "+":
-		return numOne + numTwo
-	elif operation == "*":
-		return numOne * numTwo
-	elif operation == "/":
-		divNum = numOne / numTwo
-		roundedNum = round(divNum, 2)
-		return roundedNum
-	elif operation == "%":
-		return numOne % numTwo
+def doMath(numOne,numTwo,operation): #the doMath function, with the input points named numOne,numTwo, and operation respectively
+	if operation == "-": #if the string input is "-" then
+		return numOne - numTwo #subtract numTwo from numOne and return the answer
+	elif operation == "+": #if the string input is "+" then
+		return numOne + numTwo #add numTwo to numOne and return the answer
+	elif operation == "*": #if the string input is "*" then
+		return numOne * numTwo #multiply numOne by numTwo and return the answer
+	elif operation == "/": #if the string input is "/" then
+		divNum = numOne / numTwo #divide numOne by numTwo and save the answer as divNum
+		roundedNum = round(divNum, 2) #round that answer to two decimal places
+		return roundedNum #return the rounded answer
+	elif operation == "%": #if the string input is "%" then
+		return numOne % numTwo #divide numOne by numTwo, determine the remainder, and save the answer 
 	else:
-		return "invalid operator syntax"
-numberOne = int(input("First number:\n"))
-numberTwo = int(input("Second number:\n"))
+		return "invalid operator syntax" #if the input for operation does not match one of these above, then it was imputed incorrectly
+numberOne = int(input("First number:\n")) #Print First number:, then skip a line and wait for user input, which is converted into an integer
+numberTwo = int(input("Second number:\n")) #Print Second number:, then skip a line and wait for user input, which is converted into an integer
 ```
 With all that, the user is prompted with the input(), where the quotations in the brackets appear as text for the user to see. The function runs and the results are then printed and the program ends.
