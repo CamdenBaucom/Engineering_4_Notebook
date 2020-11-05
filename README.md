@@ -29,3 +29,26 @@ else: #if the activeProgram boolean is False, which can only be done through the
 	print("leaving program") #tell the user they are leaving the program
 	exit() #leave the program"
 ```
+
+## Python Program 01 – Calculator
+A calculator with 5 different operators and two different numbers, all based off user input. The input mechanism was similar to the one on Hello Python above, but since the inputs were two integers and then an operator, I first treated them all like strings. Then with the operators, I matched the string of the operator with the actual operation. Finally with the integers, I just put them into an int() before sticking them into the function.
+```ruby
+def doMath(numOne,numTwo,operation):
+	if operation == "-":
+		return numOne - numTwo
+	elif operation == "+":
+		return numOne + numTwo
+	elif operation == "*":
+		return numOne * numTwo
+	elif operation == "/":
+		divNum = numOne / numTwo
+		roundedNum = round(divNum, 2)
+		return roundedNum
+	elif operation == "%":
+		return numOne % numTwo
+	else:
+		return "invalid operator syntax"
+numberOne = int(input("First number:\n"))
+numberTwo = int(input("Second number:\n"))
+```
+With all that, the user is prompted with the input(), where the quotations in the brackets appear as text for the user to see. The function runs and the results are then printed and the program ends.
