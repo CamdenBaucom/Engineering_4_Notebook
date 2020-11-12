@@ -52,3 +52,18 @@ numberOne = int(input("First number:\n")) #Print First number:, then skip a line
 numberTwo = int(input("Second number:\n")) #Print Second number:, then skip a line and wait for user input, which is converted into an integer
 ```
 With all that, the user is prompted with the input(), where the quotations in the brackets appear as text for the user to see. The function runs and the results are then printed and the program ends.
+
+## Python Program 02 – Quadratic Solver
+A basic quadratic solver with three coefficient inputs, which first determines if there are real roots, by taking the discriminant, and if it does exist, puts the roots into an array and returns the roots. The bulk of the code is the quadSolver function, which first determines the discriminant, b^2 -4ac, and since the square root of the discriminant is then determined, the only way to get a real root(i is non-real) is for the discriminant to be greater than or equal to 0. For non real roots, it returns "No real roots," but for real roots it first creates an empty array called roots, and adds the two roots to them, which is then returned and printed. I also had to import math, as Python doesn't have a built in square root function.
+```ruby
+import math
+def quadSolver(co1,co2,co3):
+	discrim = (co2 ** 2)-(4 * co1 * co3)
+	if discrim < 0:
+		return "No real roots"
+	else:
+		roots = []
+		roots.append(((-1 * co2) - (math.sqrt(discrim))) / (co1 * 2))
+		roots.append(((-1 * co2) + (math.sqrt(discrim))) / (co1 * 2))
+		return roots
+```
