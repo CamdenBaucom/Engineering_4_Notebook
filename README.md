@@ -56,14 +56,14 @@ With all that, the user is prompted with the input(), where the quotations in th
 ## Python Program 02 – Quadratic Solver
 A basic quadratic solver with three coefficient inputs, which first determines if there are real roots, by taking the discriminant, and if it does exist, puts the roots into an array and returns the roots. The bulk of the code is the quadSolver function, which first determines the discriminant, b^2 -4ac, and since the square root of the discriminant is then determined, the only way to get a real root(i is non-real) is for the discriminant to be greater than or equal to 0. For non real roots, it returns "No real roots," but for real roots it first creates an empty array called roots, and adds the two roots to them, which is then returned and printed. I also had to import math, as Python doesn't have a built in square root function.
 ```ruby
-import math
-def quadSolver(co1,co2,co3):
-	discrim = (co2 ** 2)-(4 * co1 * co3)
-	if discrim < 0:
-		return "No real roots"
-	else:
-		roots = []
-		roots.append(((-1 * co2) - (math.sqrt(discrim))) / (co1 * 2))
-		roots.append(((-1 * co2) + (math.sqrt(discrim))) / (co1 * 2))
-		return roots
+import math #imports a math module with a square root function, which Python does not have
+def quadSolver(co1,co2,co3): #quadSolver function, with 3 inputs
+	discrim = (co2 ** 2)-(4 * co1 * co3) #find the discriminant, b^2 - 4ac 
+	if discrim < 0: #if the discriminant is less than 0, you are finding the square root of a negative number which is non-real
+		return "No real roots" #tell the user that there are no real roots
+	else: #if the discriminant is greater than or equal to 0
+		roots = [] #create an empty array called roots
+		roots.append(((-1 * co2) - (math.sqrt(discrim))) / (co1 * 2)) #plug the coefficients into the quadratic formula, and add the root to the array
+		roots.append(((-1 * co2) + (math.sqrt(discrim))) / (co1 * 2)) #plug the coefficients into the quadratic formula, and add the root to the array
+		return roots #return the array
 ```
