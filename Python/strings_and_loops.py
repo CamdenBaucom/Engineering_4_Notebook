@@ -2,16 +2,11 @@
 # Camden Baucom
 
 def takeapart(sen):
+	sen = sen.replace(" ", "- ")
 	words = sen.split()
-	sentence = [words]
-	for word in sentence:
-		let = [word]
-		return [letter for letter in let]
-		#for letter in word:
-			#return letter
-			#if letter == " ":
-				#letter = "-"
-			#else:
-				#return letter
+	for word in words:
+		for letter in word:
+			print(letter)
 fullSentence = input("Enter a sentence and its letters' will be printed:\n")
-print(takeapart(fullSentence))
+takeapart(fullSentence)
+print("-")
