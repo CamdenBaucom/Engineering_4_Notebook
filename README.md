@@ -67,3 +67,14 @@ def quadSolver(co1,co2,co3): #quadSolver function, with 3 inputs
 		roots.append(((-1 * co2) + (math.sqrt(discrim))) / (co1 * 2)) #plug the coefficients into the quadratic formula, and add the root to the array
 		return roots #return the array
 ```
+
+## Python Program 03 – Strings and Loops
+A program to take sentences and print them vertically with minus signs replacing spaces. However, we were also tasked to do this by using arrays and for loops. Initially I had problems when I tried printing the arrays, where only the first word would print and nothing else, before I realized that the .split() built in python function automatically creates an array. I also made use of another built in python function, the .replace() function which replaces all instances of something with something else. In my case, I did it to create the minus sign between the words, because the .split() function gets rid of all spaces, so I had to use the .replace() before the .split(). Then I used the for loop, which takes items inside of an array, to go deeper into the array, eventually to the letters themselves, which were finally prined.
+```ruby
+def takeapart(sen): #takeapart fucntion, with a variable called sen
+	sen = sen.replace(" ", "- ") #replace all instances of spaces with a dash and then the space, so that later at the end of each word will be a minus sign
+	words = sen.split() #split the words wherever there is a space, and create an array with the list called word
+	for word in words: #for the items, each indidual word, in the array words
+		for letter in word: #for the items, each individual letter, in the array word
+			print(letter) #print the letters
+```
