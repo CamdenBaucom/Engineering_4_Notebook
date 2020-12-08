@@ -78,3 +78,27 @@ def takeapart(sen): #takeapart fucntion, with a variable called sen
 		for letter in word: #for the items, each individual letter, in the array word
 			print(letter) #print the letters
 ```
+
+## Python Challenge – MSP
+A hangman function! It was really fun to play around and tinker with. Beyond the bare minimum hangman, I allowed the user to choose difficulty, meaning how many guesses they got, told the user all they guesses they made, and if they didn't guess the word, I told them what the word was in the end. The program is based almost completely on functions, of which there are 4 in the program: a hangman shape creating function, a word encoding function, a guess loging function, and a word search function. The hardest of the 4 was the word search function of which the hardest part was when the user guessed correctly. To do this, the function loops through all the letters of the word and stores the letter number at which the guess is. Then the function updates the original blank (full of dashes) word by deleting the dashes at the correct index and inserting the guess in their place.
+```ruby
+if guess in word: #if the user's guess is in the word
+	print("Got one!") #print Got one!
+	for i in range(len(word)): #loop through this function the number of times equal to the length of the word
+		if word[i] == guess: #as i counts up from 0 to the length of the word, check each letter of the word, by looking at index i, to see if it matches the guess
+			guessPos.append(i) #if the guess matches a letter at index i, add the number of i to guessPos
+	for i in range(len(guessPos)): #loop through this function how ever many times the guess was inside the wod
+		del blankWordList[guessPos[i]] #delete a dash from blankWordList at the index that the correct guess appeared
+		blankWordList.insert(guessPos[i],guess) #add the correct guess to blankWordList at the index that the correct guess appeared
+	blankWord = ''.join(map(str, blankWordList)) #blankWord is equal to the string of blankWordList
+	print(blankWord) #print blankWord, which is the dashes with updated correct guesses
+```
+Then to keep the program going, and allow the user to keep making guesses the program must pass 2 criteria, first that the number of wrong guesses does not equal the number of guesses to make the hangman, and second that the originally blank word that is updated with correct guesses does not equal the starting word. It also runs through the guessLog function to make sure that all gueses are unique and not repeateed.
+```ruby
+while numberWrong < endCrit and blankWord != secretWord: #while the number of wrong guess does not equal the end criteria (above) and the blankWord (dashes replaced with guesses) does not equal secretWord
+	newGuess = input("Player 2, please guess a letter:\n") #player 2 is prompted to enter a guess
+	if guessLog(newGuess) == False: #guessLog is run with the guess and if it returns false, meaning this is a repeat guess
+		print("You have already guessed that, please input a new guess") #tell the user it is a repeat guess and ask them to enter another
+	else: #if guessLog does not return false, meaning this is a unique guess
+		wordSearch(newGuess) #run wordSearch function with the guess
+```
