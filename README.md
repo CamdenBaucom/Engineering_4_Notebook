@@ -117,3 +117,19 @@ do #do this for the loop
 done #end the loop
 ```
 [Video of it working](https://drive.google.com/file/d/1PnNx3qf194lGCICYVwvdoQJYG4Jole6H/view)
+
+## GPIO Pins - Python
+The exact same program as GPIO Pins - Bash, but this time using Python syntax, which I'm more comfortable with. The wiring was the same, and I also used a for loop, so I just reused the video from GPIO Pins - Bash, as everything physical was exactly the same. This time, however, I had to import two Python libraries to make the GPIO pins work, and reduce excess code. 
+```ruby
+from gpiozero import LED #from the gpiozero library, import the function LED
+from time import sleep #from the time library, import the function sleep
+for i in range(10): #loop this 10 times
+	led1.on() #turn led1 on
+	led2.on() #turn led2 on
+	sleep(1) #wait 1 second
+	led1.off() #turn led1 off
+	led2.off() #turn led2 off
+	sleep(1) #wait 1 second
+```
+
+[Video of it working (reused from GPIO Pins - Bash)](https://drive.google.com/file/d/1PnNx3qf194lGCICYVwvdoQJYG4Jole6H/view)
