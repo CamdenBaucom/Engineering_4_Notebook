@@ -1,14 +1,14 @@
 #!/bin/bash
-gpio mode 0 out
-gpio mode 2 out
-for i in {1..10}
-do
-	gpio write 0 0
-	gpio write 2 0
-	sleep 1
-	gpio write 0 1
-	gpio write 2 1
-	sleep 1
-done
-gpio write 0 0
-gpio write 2 0
+gpio mode 0 out #sets up pin 0 as an output
+gpio mode 2 out #sets up pin 2 as an output
+for i in {1..10} #loop 10 times
+do #do this for the loop
+	gpio write 0 0 #Turn pin 0 off
+	gpio write 2 0 #Turn pin 2 off
+	sleep 1 #Wait 1 second
+	gpio write 0 1 #Turn pin 0 on
+	gpio write 2 1 #Turn pin 2 on
+	sleep 1 #Wait 1 second
+done #end the loop
+gpio write 0 0 #turn pin 0 off
+gpio write 2 0 #turn pin 2 off
