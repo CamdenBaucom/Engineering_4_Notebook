@@ -102,3 +102,18 @@ while numberWrong < endCrit and blankWord != secretWord: #while the number of wr
 	else: #if guessLog does not return false, meaning this is a unique guess
 		wordSearch(newGuess) #run wordSearch function with the guess
 ```
+
+## GPIO Pins – Bash
+A simple progam, but a very nice introduction to hardware and Bash. The wiring was very simple, with just two leds, and Bash was also very simple with a very basic for loop. Bash itself has slightly different syntax than Python, but all the same logic applies, so all I had to do was become familiar with the exact Bash syntax.
+```ruby
+for i in {1..10}
+do
+	gpio write 0 0
+	gpio write 2 0
+	sleep 1
+	gpio write 0 1
+	gpio write 2 1
+	sleep 1
+done
+```
+[Video of it working](https://drive.google.com/file/d/1PnNx3qf194lGCICYVwvdoQJYG4Jole6H/view)
