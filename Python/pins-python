@@ -1,0 +1,11 @@
+from gpiozero import LED #from the gpiozero library, import the function LED
+from time import sleep #from the time library, import the function sleep
+led1 = LED(17) #establishes an led output at pin 17 equal to led1
+led2 = LED(27) #establishes an led output at pin 27 equal to led2
+for i in range(10): #loop this 10 times
+	led1.on() #turn led1 on
+	led2.on() #turn led2 on
+	sleep(1) #wait 1 second
+	led1.off() #turn led1 off
+	led2.off() #turn led2 off
+	sleep(1) #wait 1 second
