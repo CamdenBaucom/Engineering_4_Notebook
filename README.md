@@ -133,3 +133,8 @@ for i in range(10): #loop this 10 times
 ```
 
 [Video of it working (reused from GPIO Pins - Bash)](https://drive.google.com/file/d/1PnNx3qf194lGCICYVwvdoQJYG4Jole6H/view)
+
+## GPIO Pins - SSH
+My first time remotely running an application, albeit one that was two lines long! This assignment should have been very straightforward but I initially struggled with connecting to my pi on the Seure Shell App, as I mistakenly though the hostname of the application was "raspberrypi" and not my ip address, eventually though I figured out my issue and the rest of the assignment was a breeze, just initiallizing the pins, and then turning them on / off.
+
+[Video of it working](https://drive.google.com/file/d/1QUJS4yOZbOzWK4icZdXCIiUZ8wNOO8D1/view)
