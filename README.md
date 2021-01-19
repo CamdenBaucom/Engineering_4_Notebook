@@ -138,3 +138,24 @@ for i in range(10): #loop this 10 times
 My first time remotely running an application, albeit one that was two lines long! This assignment should have been very straightforward but I initially struggled with connecting to my pi on the Seure Shell App, as I mistakenly though the hostname of the application was "raspberrypi" and not my ip address, eventually though I figured out my issue and the rest of the assignment was a breeze, just initiallizing the pins, and then turning them on / off.
 
 [Video of it working](https://drive.google.com/file/d/1QUJS4yOZbOzWK4icZdXCIiUZ8wNOO8D1/view)
+
+## GPIO Pins - I2C
+A very challenging but fun assignment mashing together Adafruits's SSD1306 Display and LSM303 Accelerometer. My biggest problem I had was when I displayed my data it would display on top of itself, meaning you could never read what it said, eventually though I figured out that if I printed a black rectangle at the beginning of the loop and then added a bit of a delay at the end it would work. In addition I learned the very vaulable skill of copy pasting in Beagle Term. On Chrome you copy with ctrl+c and paste with ctrl+v, but in Beagle term you copy with ctrl+shift+c and paste with ctrl+shift+v, meaning that if I want to copy something in Chrome and paste it into Beagle Term I would first use ctrl+c and then ctrl+shift+v.
+```ruby
+while True: #run forever
+	draw.rectangle((0,0,width,height), outline=0, fill=0) #create a black rectangle the total size of the screen
+	draw.text((0, 0),    'Accel Data:',  font=font, fill=500) #Write Accel Data at the top
+	accel, mag = lsm303.read() #accel reads from the lsm
+	accel_x, accel_y, accel_z = accel #take the three varibles and asign them to x,y,z
+	real_accel_x = accel_x / 100 #turn it into m/s^2
+	real_accel_y = accel_y / 100 #turn it into m/s^2
+	real_accel_z = accel_z / 100 #turn it into m/s^2
+	draw.text((0, 20),    'X:{0:.3f}'.format(real_accel_x),  font=font, fill=500) #print X: and then its info with 3 decimal places
+	draw.text((0, 35),    'Y:{0:.3f}'.format(real_accel_y),  font=font, fill=500) #print X: and then its info with 3 decimal places
+	draw.text((0, 50),    'Z:{0:.3f}'.format(real_accel_z),  font=font, fill=500) #print X: and then its info with 3 decimal places
+	disp.image(image) #print all the previous data
+	disp.display() #display the image
+	time.sleep(0.1) #wait 0.1 seconds (before a new rectangle is made and the info gets updated
+```
+
+[Video of it working](https://drive.google.com/file/d/1W_XgL-uXAwXyuA7x7YuOWgVFWfFJRDs9/view)
