@@ -186,3 +186,20 @@ while True: #run forever
 
 
 [Video of it working](https://drive.google.com/file/d/13DM5EzGyQQwg0XanCdZkBzn4OGdrrC4v/view)
+
+## Hello Flask
+A quick and easy assignment learning how to use Flask and set up a web server on my pi! A few short lines set up the app.py, and then ran the hello world function. Then any device on my internet typed in the pi's ip address and ran the function.
+```ruby
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route("/")
+def hello_world():
+     return "hello world!"
+
+if __name__ == "__main__":
+     app.run(host="0.0.0.0", port=80)
+```
+
+[Video of it working](https://drive.google.com/file/d/1nUV2RZbNNgAsf7K5HblyD9K9FvmR7Tun/view)
