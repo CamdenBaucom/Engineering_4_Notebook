@@ -159,3 +159,30 @@ while True: #run forever
 ```
 
 [Video of it working](https://drive.google.com/file/d/1W_XgL-uXAwXyuA7x7YuOWgVFWfFJRDs9/view)
+
+## Headless
+A simple assignment that took a lot longer than it should have. Basically all that I needed to do was to create a simple graphical display of one the three variables, x, y, or z, which I did fairly quickly but then I ran straight into the brick wall of rc.local. The final step of the assignment was to make the program run without a physical connection to the computer so I tried to edit rc.local to make the program run whenever connected to power, but something on my pi was stopping that from happening. Eventually I ditched that and just used an SSH connection to run which worked perfectly. For the graph itself I just had to determine the general range of z which usually was between 11 and -11, and then convert that into heights which was displayed as a moving line on a sort of bar graph. 
+```ruby
+while True: #run forever
+	draw.rectangle((0,0,width,height), outline=0, fill=0) #create a black rectangle the total size of the screen
+	draw.text((45,50),    'Z:m/s^2',  font=font, fill=500) #Write Z:m/s^2 at the top
+	accel, mag = lsm303.read() #accel reads from the lsm
+	accel_x, accel_y, accel_z = accel #take the three varibles and asign them to x,y,z
+	real_accel_z = accel_z / 100 #turn it into m/s^2
+	if real_accel_z > 11: #if accel is greater than 11
+		real_accel_z = 11 #make it 11
+	if real_accel_z < -11: #if accel is less than -11
+		real_accel_z = -11 # make it -11
+	math_z = (real_accel_z - 11)*(-1) #subtract 11 and make it positive again
+	line_z = (math_z * 40)/(22) #numbers will range from 0-22 and they need to range from 0-40 so convert
+	draw.text((0, 0),    '11',  font=font, fill=500) #Accel of 11 will be printed at the top
+	draw.text((0, 20),    '0',  font=font, fill=500) #Accel of 0 will be printed in the middle
+	draw.text((0, 40),    '-11',  font=font, fill=500) #Accel of -11 will be printed at the bottom
+	draw.line((30, line_z, 98, line_z), fill=255) #create a line with y values ranging from 0-40 according to the scale
+	disp.image(image) #print all the previous data
+	disp.display() #display the image
+	time.sleep(0.01) #wait 0.01 seconds (before a new rectangle is made and the info gets updated
+```
+
+
+[Video of it working](https://drive.google.com/file/d/13DM5EzGyQQwg0XanCdZkBzn4OGdrrC4v/view)
