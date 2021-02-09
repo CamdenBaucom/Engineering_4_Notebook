@@ -8,15 +8,24 @@ GPIO.setup(27,GPIO.OUT)
 
 app = Flask(__name__)
 
-@app.route("/", methods=["GET","POST1","POST2"])
+@app.route("/", methods=["GET","POST"])
 def index():
-     if request.method == "POST1" or request.method == "POST2":
-          if request.method == "POST1":
+     if request.method == "POST":
+          if request.form.get("submitBtn1") == "You Turned on the Green Light!" and request.form.get("submitBtn1") == "You Turned on the Red Light!":
                GPIO.output(17,GPIO.HIGH)
+               GPIO.output(27,GPIO.HIGH)
                msg1 = request.form.get("submitBtn1")
-	  else:
-	       GPIO.output(27,GPIO.HIGH)
                msg2 = request.form.get("submitBtn2")
+          elif request.form.get("submitBtn1") == "You Turned on the Green Light!":
+               GPIO.output(17,GPIO.HIGH)
+               GPIO.output(27,GPIO.LOW)
+               msg1 = "You have not Turned on the Green Light Yet."
+               msg2 = request.form.get("submitBtn2")
+	  else:
+               GPIO.output(17,GPIO.LOW)
+               GPIO.output(27,GPIO.HIGH)
+               msg1 = request.form.get("submitBtn1")
+               msg2 = "You have not Turned on the Red Light Yet."
      else:
           GPIO.output(17,GPIO.LOW)
 	  GPIO.output(27,GPIO.LOW)
