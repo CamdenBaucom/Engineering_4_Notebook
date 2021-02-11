@@ -1,14 +1,20 @@
 <!doctype html>
 <html>
 <head>
-     <title>GPIO with Flask!</title>
+<title>GPIO with Flask!</title>
 </head>
+<style>
+body {
+  background-color: cyan;
+  color: red;
+}
+</style>
 <body>
 {{msg1}}
 <form method="POST">
-     <button type="submit" name="submitBtn1" value="You Turned on the Green Light!">Click to Turn on the Green Light!</button>
+     <button type="submit" name="submitBtn1" value="You Turned on the Green Light!">Click to Turn on/off the Green Light!</button>
      <br>{{msg2}}
-     <br><button type="submit" name="submitBtn2" value="You Turned on the Red Light!">Click to Turn on the Red Light!</button>
+     <br><button type="submit" name="submitBtn2" value="You Turned on the Red Light!">Click to Turn on/off the Red Light!</button>
 </form>
 </body>
 </html>
