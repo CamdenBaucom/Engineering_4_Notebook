@@ -203,3 +203,57 @@ if __name__ == "__main__":
 ```
 
 [Video of it working](https://drive.google.com/file/d/1nUV2RZbNNgAsf7K5HblyD9K9FvmR7Tun/view)
+
+## GPIO PINS - Flask
+A slightly tricky assignment turning the Raspberry Pi into web server that can control two leds over the internet. On the main program, app.py, I first had to figure out how to create two buttons using the one POST method, which I did by first testing whether POST had occured, indicating a click of some button, and then testing the value of one of the buttons and thus determing which was clicked. Initially I only had it so that only one button could be on at a time, and you couldn't turn off both lights once one was on, because I repeatedly got an error called "local variable referenced before assignment" when I tried to store and then modify the value of the lights. I tried turning the variables into global variables and then nonlocal variables, but nothing was working before I eventually realized that a. global variables must be created and then stored with information and b. a gloabl variable outside of a function, must be reinitalized as a global variable inside of a function. Finally I could turn both lights on at the same time, but I couldn't turn them off. So, I created a secondary if statement after the inital button state tests to determine whether the light was already on when the button was pressed, and if so to turn off the light. In the html template, I created two buttons seperated by the messages referenced in app.py. Finally, I changed the background color and text color inside <style>.
+	
+```ruby
+<style>
+body {
+  background-color: cyan;
+  color: red;
+}
+</style>
+<body>
+{{msg1}}
+<form method="POST">
+     <button type="submit" name="submitBtn1" value="You Turned on the Green Light!">Click to Turn on/off the Green Light!</button>
+     <br>{{msg2}}
+     <br><button type="submit" name="submitBtn2" value="You Turned on the Red Light!">Click to Turn on/off the Red Light!</button>
+</form>
+</body>
+```
+```ruby
+global msg1
+global msg2
+msg1 = "You have not Turned on the Green Light Yet."
+msg2 = "You have not Turned on the Red Light Yet."
+
+app = Flask(__name__)
+
+@app.route("/", methods=["GET","POST"])
+def index():
+     if request.method == "POST":
+          if request.form.get("submitBtn1") == "You Turned on the Green Light!":
+               if GPIO.input(17) == 1:
+	            GPIO.output(17,GPIO.LOW)
+                    global msg2
+                    global msg1
+		    msg2 = msg2
+                    msg1 = "You Turned off the Green Light!"
+	       else:
+                    GPIO.output(17,GPIO.HIGH)
+	            msg2 = msg2
+                    msg1 = request.form.get("submitBtn1")
+	  else:
+               if GPIO.input(27) == 1:
+                    GPIO.output(27,GPIO.LOW)
+                    msg1 = msg1
+                    msg2 = "You Turned off the Red Light!"
+               else:
+                    GPIO.output(27,GPIO.HIGH)
+                    msg1 = msg1
+                    msg2 = request.form.get("submitBtn2")
+     return render_template("index.html", msg1=msg1, msg2=msg2)
+ ```
+[Video of it working](https://drive.google.com/file/d/1gxTqLx5-orizdu3gGBTxr56LiICMIlUg/view)
