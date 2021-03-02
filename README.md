@@ -257,3 +257,52 @@ def index():
      return render_template("index.html", msg1=msg1, msg2=msg2)
  ```
 [Video of it working](https://drive.google.com/file/d/1gxTqLx5-orizdu3gGBTxr56LiICMIlUg/view)
+
+## Pi Camera
+A fun and easy introduction to the Pi Camera that unfourtanetly got sidetracked. After completing the code my interent went out for about 2 weeks, stopping me from finishing the assignment, but I could not be deterred and finally got it working! For the assignment itself, the first camera test was done simply with the import of "time" and "picamera." The second camera test was slightly more complicated, but easily solved using Python lists, moving between the items and repeating the picture taking structure with i in range. 
+
+```ruby
+with picamera.PiCamera() as camera:
+    camera.resolution = (1024, 768)
+    print("Get ready")
+    time.sleep(1)
+    print("3")
+    time.sleep(1)
+    print("2")
+    camera.start_preview()
+    time.sleep(1)
+    print("1")
+    time.sleep(1)
+    print("Taking picture")
+    camera.capture('pic1.jpg')
+    print("Done")
+```
+
+![Pic1](https://github.com/CamdenBaucom/Engineering_4_Notebook/blob/main/Python/Pictures/pic1.jpg)
+    
+```ruby
+effects = ['watercolor','cartoon','blur','washedout','oilpaint']
+
+for i in range(5):
+    with picamera.PiCamera() as camera:
+        camera.resolution = (1024, 768)
+        camera.image_effect = str(effects[i])
+        print("Get ready")
+        time.sleep(1)
+        print("3")
+        time.sleep(1)
+        print("2")
+        camera.start_preview()
+        time.sleep(1)
+        print("1")
+        time.sleep(1)
+        print("Taking picture")
+        camera.capture('filterpic'+str(i)+'.jpg')
+        print("Done")
+```
+
+![FilterPic0](https://github.com/CamdenBaucom/Engineering_4_Notebook/blob/main/Python/Pictures/filterpic0.jpg)
+![FilterPic1](https://github.com/CamdenBaucom/Engineering_4_Notebook/blob/main/Python/Pictures/filterpic1.jpg)
+![FilterPic2](https://github.com/CamdenBaucom/Engineering_4_Notebook/blob/main/Python/Pictures/filterpic2.jpg)
+![FilterPic3](https://github.com/CamdenBaucom/Engineering_4_Notebook/blob/main/Python/Pictures/filterpic3.jpg)
+![FilterPic4](https://github.com/CamdenBaucom/Engineering_4_Notebook/blob/main/Python/Pictures/filterpic4.jpg)
