@@ -5,7 +5,7 @@ effects = ['watercolor','cartoon','blur','washedout','oilpaint']
 for i in range(5):
     with picamera.PiCamera() as camera:
         camera.resolution = (1024, 768)
-	camera.image_effect = str(effects[i])
+        camera.image_effect = str(effects[i])
         print("Get ready")
         time.sleep(1)
         print("3")
