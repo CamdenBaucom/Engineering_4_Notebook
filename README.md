@@ -306,3 +306,11 @@ for i in range(5):
 ![FilterPic2](https://github.com/CamdenBaucom/Engineering_4_Notebook/blob/main/Python/Pictures/filterpic2.jpg)
 ![FilterPic3](https://github.com/CamdenBaucom/Engineering_4_Notebook/blob/main/Python/Pictures/filterpic3.jpg)
 ![FilterPic4](https://github.com/CamdenBaucom/Engineering_4_Notebook/blob/main/Python/Pictures/filterpic4.jpg)
+
+
+## Copypasta
+Two offical Raspberry Pi sponsered assignments that were pretty straightforward but more difficult than expected on a Chromebook. The first assignment, an infared motion sensor that recorded when it detected a change in temperature, was pretty simple except that the file of what the video had captured wouldn't display from the terminal. So, I had to push it to GitHub, download it, and then, since it still wouldn't display, put it through a sketchy online video converter to make it a .mp4. The second assignment, a push button stop motion, was difficult because a. I didn't have a button, and b. I couldn't see what the camera was capturing (because it wouldn't display on the terminal) until the whole stop motion was done. So, I created a make shift button, by plugging one wire into ground and another into the input and then touching the wires together when I wanted to complete the circuit (aka push the button). I then taped my Raspberry Pi Camera to a coffee mug, and then used my phone to appoximate what the Camera was seeing, before finally filming the first couple moves of a chess game. It turned out pretty well, with the only downside being that my makeshift button had captured over 450 frames, when I had thought I had captured about 50.
+
+[Video of the "intruder detector"](https://drive.google.com/file/d/1YXLLjRcdM6trrKUx9GfEQ7qMQNhIovOo/view)
+
+[Video of the animation](https://drive.google.com/file/d/1cJ5scLkEBMyj2W6Qv-T-p-jMO55xEbqN/view)
